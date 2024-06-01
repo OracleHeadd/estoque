@@ -1,0 +1,32 @@
+<h2>itens no banco de dados</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Marca:</th>
+            <th scope="col">Nome:</th>
+            <th scope="col">Ações:</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each itens}}
+        <tr>
+            <th scope="row">{{@index}}</th>
+            <td class="title-columna"><a href="itens/{{this._id}}">{{ this.brand }}</a></td>
+            <td class="title-columnb"><a href="itens/{{this._id}}">{{ this.objectname }}</a></td>
+            <td class="actions-column">
+                <a href="itens/{{this._id}}" class="btn btn-primary btnfix2">✎</a>
+                <form action="itens/delete" method="POST">
+                    <input type ="hidden" name="id" value="{{this._id}}">
+                    <input type="submit" class="btn btn-danger btnfix3" value="⌫">
+                </form>
+            </td>
+            
+        </tr>
+        {{else}}
+            <p>Não há itens ainda! Favor adicionar</p>
+        {{/each}}
+
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+
+<h3> Detalhes do item:</h2>
+
+<form action="/itens/edit" method="POST">
+    <input type="hidden" name="id" value="{{iten._id}}">
+   
+   <div class="row">
+   
+        <div class="col">
+            <label for "title" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{iten.objectname }} ">
+        </div>
+
+        <div class="col">
+            <label for "brand" class="form-label">Marca</label>
+            <input type="text" class="form-control" id="brand" name="brand" value="{{iten.brand}}">
+        </div>
+
+   </div>
+
+
+    <div class="mb-3">
+        <label for "qrcode" class="form-label">Código do QRCODE</label>
+        <input type="text" class="form-control" id="qrcode" name="qrcode" value=" {{iten.idnumber}}">
+    </div>
+
+    <div class="mb-3">
+        <label for "description" class="form-label">Descrição do produto</label>
+        <textarea class="form-control" name="description">{{iten.description}}</textarea>
+    </div>
+
+<div class="btnfix">
+    <button type="submit" class="btn btnfix btn-secondary btn-lg btn-dark">Finalizar edição</button>
+</div>
+</form>
