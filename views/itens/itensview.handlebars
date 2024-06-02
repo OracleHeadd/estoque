@@ -1,6 +1,6 @@
 <h2>itens no banco de dados</h2>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -16,10 +16,10 @@
             <td class="title-columna"><a href="itens/{{this._id}}">{{ this.brand }}</a></td>
             <td class="title-columnb"><a href="itens/{{this._id}}">{{ this.objectname }}</a></td>
             <td class="actions-column">
-                <a href="itens/{{this._id}}" class="btn btn-primary btnfix2">✎</a>
+                <a href="itens/{{this._id}}" class="btn btn-dark btnfix2">✏️</a>
                 <form action="itens/delete" method="POST">
                     <input type ="hidden" name="id" value="{{this._id}}">
-                    <input type="submit" class="btn btn-danger btnfix3" value="⌫">
+                    <input type="submit" class="btn btn-dark btnfix3" value="❌">
                 </form>
             </td>
             

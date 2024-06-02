@@ -91,6 +91,21 @@ footer {
 
 
 
+
+.searchalign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchfix {
+    min-width: 300px;
+}
+
+.btnfixsearch {
+    margin-top: 13px;
+}
+
 .block {
     float: left;
     background-color: #f0f0f0;
@@ -103,13 +118,6 @@ footer {
 
 
 
-.btn-dark {
-    margin-left: 2px;
-    margin-inline-end: 20px;
-    min-height: 40px;
-    max-height: 40px;
-
-}
 
 .info {
     display: flex;
@@ -117,23 +125,4 @@ footer {
     justify-content: center;
 }
 
-.formfix {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 10px;
-}
 
-.search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btnfixsearch{
-    padding: 20px;
-    margin-left: 2px;
-    margin-inline-end: 20px;
-    min-height: 65px;
-    max-height: 60px;
-}

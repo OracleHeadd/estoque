@@ -1,6 +1,10 @@
-<form action="/" method="GET">
-    <input type="text" class="formfix form-control" id="search" name="brand" value="{{iten.brand}}">
-    <input type="submit" class="btn btn-primary btnfixsearch" value="Pesquisar">
+<form class="row g-3 searchalign" action="/" method="GET">
+    <div class="col-auto">
+        <input type="text" class="form-control searchfix" id="searchbar" name="brand" placeholder="Pesquisar">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-dark mb-3 btnfixsearch">🔍</button>
+    </div>
 </form>
 
 <div class="info">
@@ -9,12 +13,11 @@
             <label for="number1">Total de objetos no inventário:{{totalItems}}</label>
         </div>
     </div>
-
 </div>
 
 <h2>itens pesquisados</h2>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -30,10 +33,10 @@
             <td class="title-columna"><a href="itens/{{this._id}}">{{ this.brand }}</a></td>
             <td class="title-columnb"><a href="itens/{{this._id}}">{{ this.objectname }}</a></td>
             <td class="actions-column">
-                <a href="itens/{{this._id}}" class="btn btn-primary btnfix2">✎</a>
+                <a href="itens/{{this._id}}" class="btn btn-dark btnfix2">✏️</a>
                 <form action="itens/delete" method="POST">
                     <input type ="hidden" name="id" value="{{this._id}}">
-                    <input type="submit" class="btn btn-danger btnfix3" value="⌫">
+                    <input type="submit" class="btn btn-dark btnfix3" value="❌">
                 </form>
             </td>
         </tr>

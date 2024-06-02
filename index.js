@@ -23,20 +23,16 @@ const addRouters = require('./routes/add');
 app.get('/', async (req, res) => {
     try {
         let searchResults;
-        // Verificar se o parâmetro de consulta 'brand' está presente
+
         if (req.query.brand) {
-            // Se estiver, usar esse termo para pesquisar na coleção de itens
-            const regex = new RegExp(req.query.brand, 'i'); // 'i' para case insensitive
+            const regex = new RegExp(req.query.brand, 'i');
             searchResults = await db.getDb().db().collection('itens').find({ idnumber: regex }).toArray();
         }
 
-        // Buscar todos os itens
         const items = await db.getDb().db().collection('itens').find({}).toArray();
 
-        // Contar o número total de itens
         const totalItems = await db.getDb().db().collection('itens').countDocuments();
         
-        // Renderizar a view 'home' com ambos os dados
         res.render('home', { items, totalItems, searchResults });
     } catch (err) {
         console.error('Erro ao buscar itens e contagem de documentos:', err);
