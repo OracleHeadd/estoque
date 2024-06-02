@@ -26,7 +26,8 @@ app.get('/', async (req, res) => {
         // Verificar se o parâmetro de consulta 'brand' está presente
         if (req.query.brand) {
             // Se estiver, usar esse termo para pesquisar na coleção de itens
-            searchResults = await db.getDb().db().collection('itens').find({ brand: req.query.brand }).toArray();
+            const regex = new RegExp(req.query.brand, 'i'); // 'i' para case insensitive
+            searchResults = await db.getDb().db().collection('itens').find({ brand: regex }).toArray();
         }
 
         // Buscar todos os itens
