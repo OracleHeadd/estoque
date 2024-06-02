@@ -28,11 +28,7 @@ app.get('/', async (req, res) => {
 
         // Contar o número total de itens
         const totalItems = await db.getDb().db().collection('itens').countDocuments();
-
-        // Logar os itens e o total de itens no console
-        console.log('Items:', items);
-        console.log('Total de Items:', totalItems);
-
+        
         // Renderizar a view 'home' com ambos os dados
         res.render('home', { items, totalItems });
     } catch (err) {
