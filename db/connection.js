@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const url = "mongodb://localhost:27017/estocaDb";
+const url = "mongodb+srv://mauroroberto83:YClCOwvQF2OEBOkt@estocadb.blfmlph.mongodb.net/?retryWrites=true&w=majority&appName=EstocaDB";
 
 let _db;
 
