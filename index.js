@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
         if (req.query.brand) {
             // Se estiver, usar esse termo para pesquisar na coleção de itens
             const regex = new RegExp(req.query.brand, 'i'); // 'i' para case insensitive
-            searchResults = await db.getDb().db().collection('itens').find({ brand: regex }).toArray();
+            searchResults = await db.getDb().db().collection('itens').find({ idnumber: regex }).toArray();
         }
 
         // Buscar todos os itens
