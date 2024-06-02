@@ -1,21 +1,46 @@
-</head>
-<body>
-    <h1>Total de itens na coleção: ${totalItems} </h1>
+<div class="search">
+    <input class="formfix form-control" type="text" value="Pesquise o QR code aqui" aria-label="readonly input example" readonly>
+    <a href="itens/{{this._id}}" class="btn btn-primary btnfixsearch btn-dark">Pesquisar</a>
+</div>
 
+<div class="info">
     <div class="block">
-        <h2>Itens</h2>
         <div class="input-field">
-            <label for="number1">Total de itens</label>
-            <input type="number" id="number1" value= ${totalItems}>
+            <label for="number1">Total de objetos no inventário:{{totalItems}}</label>
         </div>
     </div>
 
-    <div class="block">
-        <h2>E/S dados</h2>
-        <div class="input-field">
-            <label for="number2">E/S do BD:</label>
-            <input type="number" id="number2">
-        </div>
-    </div>
-</body>
-</html>
+</div>
+
+<h2>itens pesquisados</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Código:</th>
+            <th scope="col">Nome:</th>
+            <th scope="col">Ações:</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each itens}}
+        <tr>
+            <th scope="row">{{@index}}</th>
+            <td class="title-columna"><a href="itens/{{this._id}}">{{ this.brand }}</a></td>
+            <td class="title-columnb"><a href="itens/{{this._id}}">{{ this.objectname }}</a></td>
+            <td class="actions-column">
+                <a href="itens/{{this._id}}" class="btn btn-primary btnfix2">✎</a>
+                <form action="itens/delete" method="POST">
+                    <input type ="hidden" name="id" value="{{this._id}}">
+                    <input type="submit" class="btn btn-danger btnfix3" value="⌫">
+                </form>
+            </td>
+            
+        </tr>
+        {{else}}
+            <p>Não há pesquisa! Favor pesquisar.</p>
+        {{/each}}
+
+    </tbody>
+</table>
