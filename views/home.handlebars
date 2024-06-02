@@ -1,7 +1,7 @@
-<div class="search">
-     <input type="text" class="formfix form-control" id="search" name="brand" value="{{iten.brand}}">
-    <a href="itens/{{this._id}}" class="btn btn-primary btnfixsearch">Pesquisar</a>
-</div>
+<form action="/" method="GET">
+    <input type="text" class="formfix form-control" id="search" name="brand" value="{{iten.brand}}">
+    <input type="submit" class="btn btn-primary btnfixsearch" value="Pesquisar">
+</form>
 
 <div class="info">
     <div class="block">
@@ -24,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-        {{#each itens}}
+        {{#each searchResults}}
         <tr>
             <th scope="row">{{@index}}</th>
             <td class="title-columna"><a href="itens/{{this._id}}">{{ this.brand }}</a></td>
@@ -36,11 +36,9 @@
                     <input type="submit" class="btn btn-danger btnfix3" value="⌫">
                 </form>
             </td>
-            
         </tr>
         {{else}}
             <p>Não há pesquisa! Favor pesquisar.</p>
         {{/each}}
-
     </tbody>
 </table>
