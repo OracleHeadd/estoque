@@ -18,13 +18,32 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const itensRoutes = require('./routes/itens');
 const addRouters = require('./routes/add');
 
+// pegar usuário do banco de dados
+const getUserFromDatabase = async (email) => {
+    return db.getDb().db().collection('users').findOne({ email: email });
+}
+
+app.post('/login', async (req, res) => {
+    const user = await db.getDb().db().collection('users').findOne({ email: req.body.email });
+
+    if (!user) {
+        return res.status(400).send('Email não encontrado');
+    }
+
+    if (req.body.password !== user.password) {
+        return res.status(400).send('Senha incorreta');
+    }
+
+    res.status(200).send('Login bem-sucedido');
+});
+
 //routes
 app.get('/', (req, res) => {
     res.redirect('/login');
 });
 
 app.get('/login', (req, res) => {
-    res.render('login/login');
+    res.render('login/login', { showNav: false} );
 });
 
 app.get('/home', async (req, res) => {
@@ -40,7 +59,7 @@ app.get('/home', async (req, res) => {
 
         const totalItems = await db.getDb().db().collection('itens').countDocuments();
         
-        res.render('home', { items, totalItems, searchResults });
+        res.render('home', { items, totalItems, searchResults, showNav: true});
     } catch (err) {
         console.error('Erro ao buscar itens e contagem de documentos:', err);
         res.status(500).send('Erro no servidor');
