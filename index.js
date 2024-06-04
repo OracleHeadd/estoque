@@ -6,7 +6,6 @@ const app = express();
 const port = 8000;
 
 //db call
-
 const db = require('./db/connection')
 
 //template engine
@@ -20,7 +19,15 @@ const itensRoutes = require('./routes/itens');
 const addRouters = require('./routes/add');
 
 //routes
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login/login');
+});
+
+app.get('/home', async (req, res) => {
     try {
         let searchResults;
 
@@ -39,7 +46,6 @@ app.get('/', async (req, res) => {
         res.status(500).send('Erro no servidor');
     }
 });
-
 
 app.use('/itens', itensRoutes);
 app.use('/add', addRouters);
